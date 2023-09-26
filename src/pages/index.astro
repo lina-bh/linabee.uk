@@ -1,0 +1,148 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import GridItem from "../components/GridItem.astro";
+import GridSubtitle from "../components/GridSubtitle.astro";
+import GridTitle from "../components/GridTitle.astro";
+import Link from "../components/Link.astro";
+import portraitImg from "../images/portrait.jpeg";
+
+const LINKS = [
+  // {
+  //   content: "Curriculum vitae",
+  //   href: "#",
+  // },
+  {
+    description: "Contact",
+    href: "/contact",
+  },
+  { description: "GitHub", href: "https://github.com/lina-bh", external: true },
+];
+
+const TECHS = [
+  "web",
+  "mobile web",
+  "javascript",
+  "react",
+  "tailwindcss",
+  "desktop",
+  "linux",
+  "c",
+  "c++",
+  "rust",
+  "node",
+  "python",
+  "sql",
+  "sqlite",
+  "docker",
+];
+---
+
+<Layout title="Lina Bhaile">
+  <div class="flex">
+    <div>
+      <h1 class="text-[2em]">
+        Lina
+        <br />
+         Bhaile
+      </h1>
+      <p class="mt-2">
+        south-east London, UK •
+        {
+          LINKS.map(({ description, href, ...obj }) => (
+            <>
+              <Link href={href}>
+                {obj.external ? "↗" : ""}
+                {description}
+              </Link>{" "}
+            </>
+          ))
+        }
+      </p>
+    </div>
+    <div class="ml-auto">
+      <Image
+        src={portraitImg}
+        width={100}
+        height={100}
+        alt="Temporary picture please don't look"
+        class="rounded-lg pt-[0.2em] max-h-full"
+      />
+    </div>
+  </div>
+
+  <div class="pt-2 content-none"></div>
+  <ul class="block overflow-x-hidden">
+    {
+      TECHS.map((item, i) => (
+        <li class="inline after:content-['_/_'] after:text-muted-grey  last-of-type:after:content-none">
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2 class="text-[1.17em] pt-2">selected works:</h2>
+  <div
+    class="py-[0.5em] gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  >
+    <GridItem>
+      <Link href="https://lina-bh.github.io/ah-gre-app">
+        <GridTitle>Avery Bus</GridTitle>
+      </Link>
+      <p>A bus tracker app for free University of Greenwich buses, for iOS.</p>
+      <GridSubtitle>
+        <p>
+          <Link href="https://github.com/lina-bh/ah-gre-app">GitHub</Link>
+        </p><p>Web, JS, React/Preact, Tailwind</p>
+      </GridSubtitle>
+    </GridItem>
+    <GridItem>
+      <GridTitle>
+        <code>heatin</code> (2021)
+      </GridTitle>
+      <p>A hardware stats monitor tool for Linux.</p>
+      <p>
+        Implements a model-view-controller pattern for seeding data to a table
+        view.
+      </p>
+      <GridSubtitle>
+        <p>
+          <Link href="https://github.com/lina-bh/heatin">GitHub</Link>
+        </p>
+        <p>Linux, C++, Qt5</p>
+      </GridSubtitle>
+    </GridItem>
+    <GridItem>
+      <GridTitle>
+        <code>markov</code> (2023)
+      </GridTitle>
+      <p>A markov chain generator and associated text parser.</p>
+      <p>Makes use of custom memory-mapped data structures.</p>
+      <GridSubtitle>
+        <p>
+          <Link href="https://github.com/lina-bh/markov">GitHub</Link>
+        </p>
+        <p>macOS/Linux, C</p>
+      </GridSubtitle>
+    </GridItem>
+    <GridItem>
+      <GridTitle>Scrobble Together</GridTitle>
+      <p>
+        A series of prototypes of a web app that replicates one user&apos;s
+        last.fm history on another&apos;s.
+      </p>
+      <GridSubtitle>
+        <p>Web, React/Vue, Tailwind/Bootstrap</p>
+      </GridSubtitle>
+    </GridItem>
+    <GridItem>
+      <GridTitle>Dolphin Emulator</GridTitle>
+      <p>
+        Port of a window to change a custom shader&apos;s configuration
+        variables, from wxWidgets to Qt5.
+      </p>
+      <GridSubtitle>Windows/Linux/macOS, C++, Qt5</GridSubtitle>
+    </GridItem>
+  </div>
+</Layout>

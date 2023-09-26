@@ -1,0 +1,14 @@
+---
+interface Props {
+  year?: string;
+}
+
+const props = Astro.props;
+---
+
+<div>
+  <h3 class="inline text-[1.17em] font-normal">
+    <slot />
+  </h3>
+  {!!props.year ? <span class="text-sm align-top"> ({props.year})</span> : null}
+</div>

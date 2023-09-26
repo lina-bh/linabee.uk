@@ -1,0 +1,40 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="data:;" />
+    <meta name="generator" content={Astro.generator} />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'none'" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main
+      class="text-black dark:text-white p-[0.2in] pt-[0.1in] md:p-[0.4in] md:pt-[0.3in]"
+    >
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    @apply bg-white;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html,
+    body {
+      @apply bg-black;
+    }
+  }
+</style>
