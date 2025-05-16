@@ -20,15 +20,21 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v3
-      - name: Install, build, and upload your site
-        run: make all
+      - uses: cachix/install-nix-action@v18
+      - uses: workflow/nix-shell-action@v3.4
+        with:
+          flakes-from-devshell: true
+          script: |
+            make
   deploy:
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: http://lina-bh.github.io/
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+      - uses: actions/deploy-pages@v4
         id: deployment
-        uses: actions/deploy-pages@v1
