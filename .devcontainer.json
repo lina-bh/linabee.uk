@@ -1,0 +1,7 @@
+{
+  "build": {
+    "dockerfile": "./Containerfile.dev"
+  },
+  "remoteUser": "1000",
+  "runArgs": ["--network=host"]
+}

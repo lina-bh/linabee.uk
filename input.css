@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@source "./template.html";
+@tailwind base;
+@tailwind utilities;
+
+body {
+  @apply pt-[0.5in] print:p-0;
+}
+
+#page {
+  @apply max-w-[210mm] print:max-w-none mx-auto py-[0.5in] px-[1in] print:p-0;
+}
+
+h2 {
+  @apply font-bold text-lg;
+}
+
+h3 {
+  @apply font-semibold;
+}
+
+h4 {
+  @apply font-medium whitespace-nowrap;
+}
+
+h4 > a {
+  @apply font-normal;
+}
+
+a {
+  @apply text-[#00e] underline decoration-dotted;
+}
+
+h2, p, ul {
+  @apply mb-[1em];
+}
+
+.level4 {
+  /* @apply pl-1; */
+}
+
+.level3 > p {
+  @apply ml-1 pl-2 border-l-2 border-pink-300 border-dotted
+}
+
+@page {
+  margin: 1in;
+}
+
+ul {
+  @apply list-disc list-inside;
+}
+
+li > p {
+  @apply inline;
+}
+
+h3 > i, li > i {
+  @apply text-neutral-500 not-italic;
+}

@@ -1,0 +1,15 @@
+FROM alpine:3.21
+
+RUN --mount=type=cache,target=/var/cache/apk \
+    --mount=type=cache,target=/var/lib/apk \
+    apk add sudo git bash libstdc++ findutils nodejs pandoc
+RUN echo '#1000 ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/user
+
+RUN addgroup -g 1000 vscode && \
+    adduser -G vscode -D -u 1000 -s /bin/bash vscode
+
+COPY --from=docker.io/oven/bun:alpine /usr/local/bin/bun /usr/local/bin
+RUN ln -s /usr/local/bin/bun /usr/local/bin/bunx
+ENV BUN_RUNTIME_TRANSPILER_CACHE_PATH=0
+
+USER vscode
