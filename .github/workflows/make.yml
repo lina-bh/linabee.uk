@@ -22,6 +22,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v3
+      - name: mkdir dist
+        run: mkdir dist
       - uses: devcontainers/ci@v0.3
         with:
           push: never
