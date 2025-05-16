@@ -2,7 +2,7 @@ FROM alpine:3.21
 
 RUN --mount=type=cache,target=/var/cache/apk \
     --mount=type=cache,target=/var/lib/apk \
-    apk add sudo git bash libstdc++ findutils nodejs pandoc make
+    apk add sudo git bash libstdc++ findutils nodejs pandoc make openssh-client
 RUN echo '#1000 ALL=(ALL:ALL) NOPASSWD: ALL' > /etc/sudoers.d/user
 
 RUN addgroup -g 1000 vscode && \
