@@ -22,7 +22,7 @@ jobs:
         run: sudo apt-get install -y pandoc make && sudo npm install -g tailwindcss @tailwindcss/cli
       - uses: actions/checkout@v3
       - name: make
-        run: make
+        run: mkdir -p dist && make
   deploy:
     needs: build
     runs-on: ubuntu-latest
