@@ -2,15 +2,15 @@
 
 NPMRUNNER := npx
 
-all: output.css index.html
+all: dist/output.css dist/index.html
 
-index.html: index.md template.html
-	    pandoc -t html5 \
+dist/index.html: index.md template.html
+	pandoc -t html5 \
 		-c output.css \
 		--template=template.html \
 		-o $@ \
 		--section-divs \
 		index.md
 
-output.css: input.css index.html
+dist/output.css: input.css dist/index.html
 	    tailwindcss -i input.css -o $@ --content ./*.html

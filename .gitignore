@@ -3,3 +3,4 @@ output.css
 index.html
 .parcel-cache/
 .direnv/
+dist/**/*
