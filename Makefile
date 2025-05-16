@@ -4,11 +4,8 @@ NPMRUNNER := bunx
 
 all: dist/output.css dist/index.html
 
-dist/*: dist/
-dist/:
-	mkdir -p $@
-
 dist/index.html: index.md template.html
+	mkdir -p dist
 	pandoc -t html5 \
 		-c output.css \
 		--template=template.html \
