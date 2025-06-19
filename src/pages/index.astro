@@ -1,16 +1,150 @@
 ---
+import "../styles/global.css"
+import SecHeader from "../components/SecHeader.astro"
+import Link from "../components/Link.astro"
+import TT from "../components/TT.astro"
+import IndentShowcase from "../components/IndentShowcase.astro"
+import ShowcaseHeading from "../components/ShowcaseHeading.astro"
 
+const techs = [
+  "frontend engineer",
+  "systems programmer",
+  "python, go & javascript",
+  "C C++ & rust",
+  "containers & terraform",
+]
+
+const ors = [
+  ["upgrade", "Golang microservice", "github.com/lina-bh/upgrade"],
+  [
+    "raspberry-pi-os-docker",
+    "Container and continuous integration",
+    "github.com/lina-bh/raspberry-pi-os-docker",
+  ],
+]
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Lina Bhaile</title>
+  </head>
+  <body class="lg:pt-[1in]">
+    <div
+      class="md:border-x lg:border-t not-print:max-w-[210mm] not-print:mx-auto"
+    >
+      <div
+        class="not-print:mx-auto not-print:max-w-[calc(210mm-2in)] md:py-[1in] flex flex-col gap-y-4 p-2 sm:p-0"
+      >
+        <header class="flex justify-between items-center">
+          <h1 class="text-2xl">Lina Bhaile</h1>
+
+          <ul class="text-right">
+            {
+              [
+                "London E1",
+                <Link href="mailto:lft@linabee.uk">lft@linabee.uk</Link>,
+              ].map((child) => <li class="list-none">{child}</li>)
+            }
+          </ul>
+        </header>
+
+        <ul>
+          {
+            techs.map((tech) => (
+              <li class="inline not-last:after:content-['_/_']">{tech}</li>
+            ))
+          }
+        </ul>
+        <section>
+          <SecHeader>Education</SecHeader>
+          <p>
+            BSc Hons Computer Science, University of Greenwich <span
+              class="inline text-gray-500"
+            >
+              (expecting to graduate in 2026)
+            </span>
+          </p>
+        </section>
+
+        <section>
+          <SecHeader>Open Source Work</SecHeader>
+          <section>
+            <ShowcaseHeading>ImageMacros4Zoomers</ShowcaseHeading>
+            <IndentShowcase>
+              <p>
+                Using HTML5 canvas in another thread & sharing messages to
+                preserve responsiveness in a web application
+              </p>
+              <p>
+                <Link href="http://github.com/lina-bh/imagemacros4zoomers"
+                  >github.com/lina-bh/imagemacros4zoomers</Link
+                >
+              </p>
+            </IndentShowcase>
+          </section>
+          <section>
+            <ShowcaseHeading>markov</ShowcaseHeading>
+            <IndentShowcase
+              ><p>
+                Simple language model training & inference choosing next token
+                at random, using high performance memory mapped data structures
+              </p>
+              <p>
+                <Link href="https://github.com/lina-bh/markov"
+                  >github.com/lina-bh/markov</Link
+                >
+              </p>
+            </IndentShowcase>
+          </section>
+          <section>
+            <ShowcaseHeading>Avery Bus</ShowcaseHeading>
+            <IndentShowcase>
+              <p>
+                Low bundle size, offline optimised web application for
+                university bus times
+              </p>
+              <p>
+                <Link href="https://github.com/lina-bh/ah-gre-app"
+                  >github.com/lina-bh/ah-gre-app</Link
+                >
+              </p>
+            </IndentShowcase>
+          </section>
+          <section>
+            <ShowcaseHeading>Heatin</ShowcaseHeading>
+            <IndentShowcase>
+              <p>
+                Modern C++ Linux app reading hardware sensor data into model and
+                rendering view through MVC pattern
+              </p>
+              <p>
+                <Link href="https://github.com/lina-bh/heatin"
+                  >github.com/lina-bh/heatin</Link
+                >
+              </p>
+            </IndentShowcase>
+          </section>
+          <section>
+            <ShowcaseHeading>Other work</ShowcaseHeading>
+            <ul>
+              <li>
+                Golang microservice <span class="font-mono">upgrade</span>
+                <Link href="https://github.com/lina-bh/upgrade"
+                  >github.com/lina-bh/upgrade</Link
+                >
+              </li>
+              <li>
+                Container image and continuous integration <Link
+                  href="https://github.com/lina-bh/raspberry-pi-os-docker"
+                  >github.com/lina-bh/raspberry-pi-os-docker</Link
+                >
+              </li>
+            </ul>
+          </section>
+        </section>
+      </div>
+    </div>
+  </body>
 </html>
